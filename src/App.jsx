@@ -8,7 +8,11 @@ import Countries from './components/Countries';
 import countryFlags from 'country-flags';
 
 function App() {
-    const [countries, setCountries] = useState([]);
+    const [countries, setCountries] = useState([
+		{code:"US", name: "United States"},
+		{code:"CN", name: "China"},
+		{code: "RU", name: "Russia"}
+	]);
 
 	function handleUpdateMedals(code, medals) {
 		setCountries(
