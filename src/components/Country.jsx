@@ -1,27 +1,54 @@
 import { useState } from 'react'
+import CountrySelector from './CountrySelector'
+import countryFlags from 'country-flags';
 
-function Country() {
-  const [gold, setGold] = useState(0)
-  const [name, setName] = useState("United States")
+function Country(props) {
+	function addMedal() {
+		let medals = props.goldMedals + 1;
+		props.onUpdateMedals(props.code, medals);
+	}
 
-  function handleClick() {
-    setGold((gold) => gold + 1)
-  }
+	function removeMedal() {
+		let medals = props.goldMedals - 1;
+		props.onUpdateMedals(props.code, medals);
+	}
 
-  return (
-    <>
-      <section id="country">
-        {name} gold medals: {gold}
-        <button
-          type="button"
-          className="counter"
-          onClick={handleClick}
-        >
-          Add medal
-        </button>
-      </section>
-    </>
-  )
+	function removeCountry() {
+		props.onDeleteCountry(props.code);
+	}
+
+	function updateCurrentCountry(e) {
+		console.log(e.target.value);
+	}
+
+	return (
+		<>
+		<section id="country">
+			{countryFlags[props.code]?.flag} {props.name} gold medals: {props.goldMedals}
+			<button
+			type="button"
+			className="counter"
+			onClick={addMedal}
+			>
+			Add medal
+			</button>
+			<button
+			type="button"
+			className="counter"
+			onClick={removeMedal}
+			>
+			Remove medal
+			</button>
+			<button
+			type="button"
+			className="counter"
+			onClick={removeCountry}
+			>
+			Remove Country
+			</button>
+		</section>
+		</>
+	)
 }
 
 export default Country
