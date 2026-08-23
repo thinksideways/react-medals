@@ -9,8 +9,10 @@ function Country(props) {
 	}
 
 	function removeMedal() {
-		let medals = props.goldMedals - 1;
-		props.onUpdateMedals(props.code, medals);
+		if (props.goldMedals > 0) {
+			let medals = props.goldMedals - 1;
+			props.onUpdateMedals(props.code, medals);
+		}
 	}
 
 	function removeCountry() {
@@ -36,6 +38,7 @@ function Country(props) {
 			type="button"
 			className="counter"
 			onClick={removeMedal}
+			disabled={!props.goldMedals > 0}
 			>
 			Remove medal
 			</button>
