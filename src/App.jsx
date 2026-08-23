@@ -44,6 +44,7 @@ function App() {
 	return (
       <>
         <CountrySelector
+			selectedCountries={countries}
 			onAddCountry={handleAddCountry}
 		/>
 

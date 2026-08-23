@@ -3,7 +3,8 @@ import countryFlags from 'country-flags';
 import { useRef } from 'react';
 
 function CountrySelector(props) {
-    let countriesList = Object.entries(countryFlags).filter(([code, data]) => !data.name.includes("-"));
+    let countriesList = Object.entries(countryFlags).filter(([code, data]) => !data.name.includes("-") && !props.selectedCountries.some((country) => country.code === code));
+
 	const selectRef = useRef();
 
 	function addCountry() {
