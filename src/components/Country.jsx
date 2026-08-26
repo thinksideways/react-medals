@@ -4,21 +4,33 @@ import countryFlags from 'country-flags';
 import Medal from './Medal';
 
 function Country(props) {
-	let medals = {
-		gold: { quantity: 0, name: "gold" },
+	const [medals, setMedals] = useState({
+        gold: { quantity: 0, name: "gold" },
 		silver: { quantity: 0, name: "silver" },
-		bronze: { quantity: 0, name: "bronze"}
-	}
+		bronze: { quantity: 0, name: "bronze" }
+	});
 
-	function addMedal() {
-		let medals = props.goldMedals + 1;
-		props.onUpdateMedals(props.code, medals);
-	}
-
-	function removeMedal() {
-		if (props.goldMedals > 0) {
-			let medals = props.goldMedals - 1;
+	function addMedal(type = null) {
+		if (type === null) {
+			let medals = props.goldMedals + 1;
 			props.onUpdateMedals(props.code, medals);
+		} else {
+			let updatedMedals = {...medals};
+			updatedMedals[type].quantity += 1;
+			setMedals(updatedMedals);
+		}
+	}
+
+	function removeMedal(type = null) {
+		if (type === null) {
+			if (props.goldMedals > 0) {
+				let medals = props.goldMedals - 1;
+				props.onUpdateMedals(props.code, medals);
+			}
+		} else {
+			let updatedMedals = {...medals};
+			updatedMedals[type].quantity -= 1;
+			setMedals(updatedMedals);
 		}
 	}
 
@@ -40,14 +52,14 @@ function Country(props) {
 					<button
 					type="button"
 					className="counter"
-					onClick={addMedal}
+					onClick={() => addMedal()}
 					>
 					Add medal
 					</button>
 					<button
 					type="button"
 					className="counter"
-					onClick={removeMedal}
+					onClick={() => removeMedal()}
 					disabled={!props.goldMedals > 0}
 					>
 					Remove medal
@@ -65,7 +77,12 @@ function Country(props) {
 					{countryFlags[props.code]?.flag} {props.name}
 					<div className="countryMedals">
 						{Object.values(medals).map((medal) =>
-							<Medal name={medal.name} />
+							<Medal 
+								name={medal.name}
+								quantity={medal.quantity}
+								onAddMedal={addMedal}
+								onRemoveMedal={removeMedal}
+							/>
 						)}
 					</div>
 				</div>

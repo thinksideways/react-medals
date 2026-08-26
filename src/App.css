@@ -2,6 +2,10 @@ button {
     margin-left: 1rem;
 }
 
+#countrySelector {
+    margin-left: 58px;
+}
+
 ul.countries {
     list-style: none;
 }
@@ -26,4 +30,8 @@ ul.countries li {
     border: 1px groove grey;
     border-radius: 5px;
     padding: .5rem;
+}
+
+.medalCount {
+    margin-left: 15px;
 }
