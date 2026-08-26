@@ -36,7 +36,7 @@ function Country(props) {
 			<div className="assignmentVariantsCountry">
 				<div className="country assignment2">
 					<h5>Assignment 2 Variant: Increment Counter</h5>
-					{countryFlags[props.code]?.flag} {props.name} gold medals (assignment 2): {props.goldMedals}
+					{countryFlags[props.code]?.flag} {props.name} gold medals: {props.goldMedals}
 					<button
 					type="button"
 					className="counter"
