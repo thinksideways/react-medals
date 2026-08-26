@@ -5,9 +5,9 @@ import Medal from './Medal';
 
 function Country(props) {
 	let medals = {
-		gold: { quantity: 0 },
-		silver: { quantity: 0 },
-		bronze: { quantity: 0 }
+		gold: { quantity: 0, name: "gold" },
+		silver: { quantity: 0, name: "silver" },
+		bronze: { quantity: 0, name: "bronze"}
 	}
 
 	function addMedal() {
@@ -64,9 +64,9 @@ function Country(props) {
 					<h5>Assignment 3 Variant: Create a Medal component</h5>
 					{countryFlags[props.code]?.flag} {props.name}
 					<div className="countryMedals">
-						<Medal name="gold" />
-						<Medal name="silver" />
-						<Medal name="bronze" />
+						{Object.values(medals).map((medal) =>
+							<Medal name={medal.name} />
+						)}
 					</div>
 				</div>
 			</div>
