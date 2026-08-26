@@ -3,7 +3,7 @@ import Country from "./Country";
 function Countries(props) {
     return (
         <>
-            <ul>
+            <ul className="countries">
                 {props.selectedCountries.map((country) => 
                     <li key={country.code}>
                         <Country

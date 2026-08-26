@@ -1,3 +1,29 @@
 button {
-  margin-left: 1rem;
+    margin-left: 1rem;
+}
+
+ul.countries {
+    list-style: none;
+}
+
+ul.countries li {
+    margin: 1rem;
+}
+
+.countryMedals {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}
+
+.assignmentVariantsCountry {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+.country {
+    border: 1px groove grey;
+    border-radius: 5px;
+    padding: .5rem;
 }
