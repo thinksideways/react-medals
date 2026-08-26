@@ -4,25 +4,31 @@ function Medal(props) {
         silver: { name: "Silver Medal", emoji: "🥈" },
         bronze: { name: "Bronze Medal", emoji: "🥉" }
     }
-
+	function addMedal() {
+		props.onAddMedal(props.name);
+	}
+	function removeMedal() {
+		props.onRemoveMedal(props.name);
+	}
     return (
         <div className="medal">
             {medalTypes[props.name].name + " " + medalTypes[props.name].emoji}
-            {/*<button
+            <button
 			type="button"
 			className="counter"
-			onClick={addMedal}
+			onClick={() => addMedal(props)}
 			>
-			Add medal
+			+
 			</button>
+			<span class="medalCount">{props.quantity}</span>
 			<button
 			type="button"
 			className="counter"
 			onClick={removeMedal}
-			disabled={!props.goldMedals > 0}
+			disabled={props.quantity <= 0}
 			>
-			Remove medal
-			</button>*/}
+			-
+			</button>
         </div>
     )   
 }
