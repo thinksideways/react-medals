@@ -34,6 +34,10 @@ function Country(props) {
 		}
 	}
 
+	function tallyMedals() {
+		return Object.values(medals).reduce((a, b) => a + b.quantity, 0);
+	}
+
 	function removeCountry() {
 		props.onDeleteCountry(props.code);
 	}
@@ -73,8 +77,9 @@ function Country(props) {
 					</button>
 				</div>
 				<div className="country assignment3">
-					<h5>Assignment 3 Variant: Create a Medal component</h5>
-					{countryFlags[props.code]?.flag} {props.name}
+					<h5>Assignment 3/4 Variant: Create a Medal component, tally medals, increment and decrement medals by type</h5>
+					{countryFlags[props.code]?.flag} {props.name}<br />
+					Total Medals: {tallyMedals()}
 					<div className="countryMedals">
 						{Object.values(medals).map((medal) =>
 							<Medal 
