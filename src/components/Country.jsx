@@ -13,11 +13,12 @@ function Country(props) {
 	function addMedal(type = null) {
 		if (type === null) {
 			let medals = props.goldMedals + 1;
-			props.onUpdateMedals(props.code, medals);
+			props.onUpdateMedals(props.code, medals, false);
 		} else {
 			let updatedMedals = {...medals};
 			updatedMedals[type].quantity += 1;
 			setMedals(updatedMedals);
+			props.onUpdateMedals(props.code, updatedMedals)
 		}
 	}
 
